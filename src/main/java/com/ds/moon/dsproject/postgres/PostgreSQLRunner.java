@@ -1,4 +1,4 @@
-package com.ds.moon.dsproject.postgrestest;
+package com.ds.moon.dsproject.postgres;
 
 import java.sql.Connection;
 import java.sql.Statement;
