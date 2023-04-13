@@ -1,5 +1,9 @@
 package com.ds.moon.dsproject.dto;
 
+import javax.persistence.*;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -7,12 +11,21 @@ import lombok.Setter;
 @Setter
 public class UserDto {
 
-private String USER_ID ;
-private String USER_NM ;
-private String USER_EML_ADDR ;
-private String USER_TELNO ;
-private String USER_ADDR ;
-private String USER_APRV_YN ;
-private int DEPT_NO ;
+    
+    @NotBlank(message = "ID를 입력해주세요")
+    private String userId;
+    
+    @NotBlank(message = "이름을 입력해주세요")
+    private String userNm;
+
+    @NotBlank(message = "이메일을 입력해주세요")
+    @Email(message = "이메일 형식으로 입력해주세요")
+    private String userEmlAddr;
+
+    private String userTelno;
+    private String userAddr;
+    private String userAprvYn;
+
+    private int deptNo;
 
 }

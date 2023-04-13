@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>사원 관리</title>
+    <!-- 부트스트랩 5.0 CSS 파일 추가 -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+
+<body>
+    <div class="container mt-5">
+        <h1>회원 정보 보기</h1>
+        <div class ="col-9"><input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"></div>
+        <div class ="col-3"><button class="btn btn-outline-success" type="submit">Search</button></div>
+        <hr>
+        <div class="row">
+            <div class="col">
+                <div class="row">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">ID</th>
+                                <th scope="col">사원명</th>
+                                <th scope="col">부서</th>
+                                <th scope="col">상태</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row">1</th>
+                                <td>Mark</td>
+                                <td>Otto</td>
+                                <td>@mdo</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">2</th>
+                                <td>Jacob</td>
+                                <td>Thornton</td>
+                                <td>@fat</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">3</th>
+                                <td colspan="2">Larry the Bird</td>
+                                <td>@twitter</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="col">
+                <div class="form-group row">
+                    <label for="id" class="col-sm-3 col-form-label">ID:</label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" id="id" name="id" readonly>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="name" class="col-sm-3 col-form-label">이름:</label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" id="name" name="name" readonly>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="email" class="col-sm-3 col-form-label">이메일:</label>
+                    <div class="col-sm-9">
+                        <input type="email" class="form-control" id="email" name="email" readonly>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="department" class="col-sm-3 col-form-label">부서 선택:</label>
+                    <div class="col-sm-9">
+                        <select class="form-select" aria-label="Default select example">
+                            <option selected>부서명</option>
+                            <option value="1">운영</option>
+                            <option value="2">기타</option>
+                            <option value="3">드럼</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="phone" class="col-sm-3 col-form-label">전화번호:</label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" id="phone" name="phone" readonly>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="address" class="col-sm-3 col-form-label">주소:</label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" id="address" name="address" readonly>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="hobby" class="col-sm-3 col-form-label">취미 선택:</label>
+                    <div class="col-sm-9">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+                            <label class="form-check-label" for="inlineCheckbox1">게임</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+                            <label class="form-check-label" for="inlineCheckbox2">등산</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+                            <label class="form-check-label" for="inlineCheckbox2">야구</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+                            <label class="form-check-label" for="inlineCheckbox2">볼링</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+                            <label class="form-check-label" for="inlineCheckbox2">축구</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="status" class="col-sm-3 col-form-label">상태:</label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" id="status" name="status" readonly>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 부트스트랩 5.0 JS 파일 추가 (옵션) -->
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>
