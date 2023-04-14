@@ -1,10 +1,10 @@
 package com.ds.moon.dsproject.dto;
 
 import javax.persistence.*;
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.*;
 
 import lombok.Getter;
+import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 
 @Getter
@@ -26,6 +26,8 @@ public class UserDto {
     private String userAddr;
     private String userAprvYn;
 
-    private int deptNo;
+    private String deptCd;
+
+
 
 }

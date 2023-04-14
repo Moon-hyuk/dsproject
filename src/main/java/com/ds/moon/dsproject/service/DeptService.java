@@ -7,24 +7,17 @@ import javax.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
 import com.ds.moon.dsproject.entity.Dept;
-import com.ds.moon.dsproject.entity.User;
 import com.ds.moon.dsproject.repository.DeptRepository;
-import com.ds.moon.dsproject.repository.UserRepository;
 
 import lombok.RequiredArgsConstructor;
 
 @Service
 @Transactional
 @RequiredArgsConstructor
-public class UserService{
-    private final UserRepository userRepository;
+public class DeptService{
+    private final DeptRepository deptRepository;
 
-    public User saveUser(User user){
-        return userRepository.save(user);
-    }
-
-    public List<User> getListUser(){
-        return userRepository.findAll();
-        
+    public List<Dept> getListDept(){
+        return deptRepository.findAll();
     }
 }

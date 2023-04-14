@@ -19,7 +19,7 @@ public class User {
 
     @Id
     @Column(name = "user_id")
-     private String userId;
+    private String userId;
     @Column(name = "user_nm")
     private String userNm;
     @Column(name = "user_eml_addr")
@@ -30,17 +30,22 @@ public class User {
     private String userAddr;
     @Column(name = "user_aprv_yn")
     private String userAprvYn;
-    @Column(name = "dept_no")
-    private int deptNo;
+    @Column(name = "dept_cd")
+    private String deptCd;
+   
+    @OneToOne(mappedBy = "user")
+    private Dept dept;
 
-    public static User createMember(UserDto userDto) {
+    public static User createUser(UserDto userDto) {
         User user = new User();
         user.setUserId(userDto.getUserId());
+        user.setUserNm(userDto.getUserNm());
         user.setUserEmlAddr(userDto.getUserEmlAddr());
         user.setUserTelno(userDto.getUserTelno());
         user.setUserAddr(userDto.getUserAddr());
         user.setUserAprvYn(userDto.getUserAprvYn());
-        user.setDeptNo(userDto.getDeptNo());
+        user.setDeptCd(userDto.getDeptCd());
+        
         return user;
     }
 }
