@@ -7,7 +7,9 @@
   <!-- 부트스트랩 5.0 CSS 파일 추가 -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
+<script>
 
+</script>
 <body>
   <div class="container">
     <h1 class="mt-3 mb-5">회원가입</h1>
@@ -39,27 +41,11 @@
         <input type="text" class="form-control" name="userAddr" id="input-address" placeholder="주소를 입력하세요">
       </div>
       <div class="form-group row">
-        <label for="hobby" class="col-sm-3 col-form-label">취미 선택:</label>
+        <label for="hobby" class="col-sm-2 col-form-label">취미 선택:</label>
         <div class="col-sm-9">
-          <div class="form-check form-check-inline">
+          <div class="form-check form-check-inline" th:each = "hb : ${hblist}">
             <input class="form-check-input" type="checkbox" name="hb" id="inlineCheckbox1" value="option1">
-            <label class="form-check-label" for="inlineCheckbox1">게임</label>
-          </div>
-          <div class="form-check form-check-inline">
-            <input class="form-check-input" type="checkbox" name="hb" id="inlineCheckbox2" value="option2">
-            <label class="form-check-label" for="inlineCheckbox2">등산</label>
-          </div>
-          <div class="form-check form-check-inline">
-            <input class="form-check-input" type="checkbox" name="hb" id="inlineCheckbox2" value="option2">
-            <label class="form-check-label" for="inlineCheckbox2">야구</label>
-          </div>
-          <div class="form-check form-check-inline">
-            <input class="form-check-input" type="checkbox" name="hb" id="inlineCheckbox2" value="option2">
-            <label class="form-check-label" for="inlineCheckbox2">볼링</label>
-          </div>
-          <div class="form-check form-check-inline">
-            <input class="form-check-input" type="checkbox" name="hb" id="inlineCheckbox2" value="option2">
-            <label class="form-check-label" for="inlineCheckbox2">축구</label>
+            <label class="form-check-label"  th:text="${hb.hbNm}" th:value="${hb.hbCd}"></label>
           </div>
         </div>
       </div>

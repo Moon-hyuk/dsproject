@@ -28,12 +28,6 @@ public class Dept {
     @Column(name = "dept_nm")
     private String deptNm;
 
-    @OneToOne
-    @JoinTable(name = "DEPT_USER", joinColumns = {
-            @JoinColumn(name = "dept_cd", referencedColumnName = "dept_cd") }, inverseJoinColumns = {
-                    @JoinColumn(name = "dept_cd", referencedColumnName = "dept_cd") })
-    private User user;
-
     public static Dept createDept(DeptDto deptDto) {
         Dept dept = new Dept();
         dept.setDeptCd(deptDto.getDeptCd());

@@ -30,21 +30,25 @@ public class User {
     private String userAddr;
     @Column(name = "user_aprv_yn")
     private String userAprvYn;
-    @Column(name = "dept_cd")
-    private String deptCd;
+    // @Column(name = "user_dept_cd")
+    // private String userDeptCd;
    
-    @OneToOne(mappedBy = "user")
+    @ManyToOne
+    // (targetEntity = Dept.class, fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
+    @JoinColumn(name = "dept_cd")
     private Dept dept;
 
     public static User createUser(UserDto userDto) {
         User user = new User();
+        Dept dept = new Dept();
+        dept.setDeptCd(userDto.getDeptCd());
         user.setUserId(userDto.getUserId());
         user.setUserNm(userDto.getUserNm());
         user.setUserEmlAddr(userDto.getUserEmlAddr());
         user.setUserTelno(userDto.getUserTelno());
         user.setUserAddr(userDto.getUserAddr());
         user.setUserAprvYn(userDto.getUserAprvYn());
-        user.setDeptCd(userDto.getDeptCd());
+        user.setDept(dept);
         
         return user;
     }

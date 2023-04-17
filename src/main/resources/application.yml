@@ -2,6 +2,7 @@ server:
   port: 8080
 #spring.mustache.suffix=.html
 spring:
+    
   web:
     resources:
       static-locations: META-INF:/resources, classpath:/resources, classpath:/static, classpath:/static/dist, classpath:/templates
@@ -15,6 +16,7 @@ spring:
     username: test
     password: 1234
   # jpa properties
+  # SQL문 정렬하여 출력
   jpa:
     hibernate:
       ddl-auto: update # When you launch the application for the first time - switch "none" at "create"

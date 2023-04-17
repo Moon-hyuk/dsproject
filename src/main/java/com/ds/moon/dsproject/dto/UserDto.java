@@ -3,6 +3,8 @@ package com.ds.moon.dsproject.dto;
 import javax.persistence.*;
 import javax.validation.constraints.*;
 
+import com.ds.moon.dsproject.entity.Dept;
+
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
@@ -27,6 +29,8 @@ public class UserDto {
     private String userAprvYn;
 
     private String deptCd;
+    
+    
 
 
 
