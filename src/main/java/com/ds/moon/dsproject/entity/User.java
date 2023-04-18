@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 
 import com.ds.moon.dsproject.dto.UserDto;
 
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -18,7 +19,7 @@ import javax.persistence.*;
 public class User {
 
     @Id
-    @Column(name = "user_id")
+    @Column(name = "user_id",unique=true )
     private String userId;
     @Column(name = "user_nm")
     private String userNm;
@@ -30,13 +31,14 @@ public class User {
     private String userAddr;
     @Column(name = "user_aprv_yn")
     private String userAprvYn;
-    // @Column(name = "user_dept_cd")
-    // private String userDeptCd;
+   
    
     @ManyToOne
-    // (targetEntity = Dept.class, fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
     @JoinColumn(name = "dept_cd")
     private Dept dept;
+
+    
+    
 
     public static User createUser(UserDto userDto) {
         User user = new User();

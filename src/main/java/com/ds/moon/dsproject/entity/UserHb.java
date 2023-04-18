@@ -1,0 +1,58 @@
+package com.ds.moon.dsproject.entity;
+
+import java.io.Serializable;
+
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.IdClass;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
+import org.apache.ibatis.annotations.Many;
+
+import com.ds.moon.dsproject.dto.UserHbDto;
+
+import lombok.AccessLevel;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
+
+@Getter
+@Setter
+@Entity
+@Table(name ="user_hb_tb")
+@IdClass(UserHbBridge.class)
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@ToString
+// @EqualsAndHashCode //필수
+public class UserHb{
+    
+    @Id
+    @ManyToOne
+    @JoinColumn(name ="user_id")
+    private User user;
+
+    @Id
+    @ManyToOne
+    @JoinColumn(name ="hb_cd")
+    private Hb hb;
+
+    public static UserHb createUserHb(UserHbDto userHbDto){
+        UserHb userHb = new UserHb();
+        User user = new User();
+        Hb hb = new Hb();
+
+        user.setUserId(userHbDto.getUserId());
+        hb.setHbCd(userHbDto.getUserHbCd());
+
+        userHb.setUser(user);
+        userHb.setHb(hb);
+        
+        return userHb;
+    }
+
+
+}

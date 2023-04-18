@@ -16,9 +16,11 @@ import com.ds.moon.dsproject.dto.UserDto;
 import com.ds.moon.dsproject.entity.Dept;
 import com.ds.moon.dsproject.entity.Hb;
 import com.ds.moon.dsproject.entity.User;
+import com.ds.moon.dsproject.entity.UserHb;
 import com.ds.moon.dsproject.service.UserService;
 import com.ds.moon.dsproject.service.DeptService;
 import com.ds.moon.dsproject.service.HbService;
+import com.ds.moon.dsproject.service.UserHbService;
 
 import org.springframework.web.bind.annotation.PostMapping;
 
@@ -31,6 +33,8 @@ public class UserController {
 	private DeptService deptService;
 	@Autowired
 	private HbService hbService;
+	@Autowired
+	private UserHbService userHbService;
 
 	@GetMapping(value = "/index")
 	public String index() {
@@ -44,32 +48,35 @@ public class UserController {
 	}
 
 	@GetMapping(value = "/list")
-	public String UserList(Model model, String searchKeyword, String userNm) {
+	public String UserList(Model model, String searchKeyword, String userId) {
 		List<User> userlist = userService.getListUser();
 		List<Dept> deptlist = deptService.getListDept();
 		List<Hb> hblist = hbService.getListHb();
+		List<UserHb> userHblist = userHbService.getList();
+		
 		User user = new User();
-		System.out.println("우ㅜㅜㅜㅜㅜㅜㅜㅜㅜㅜㅜㅜㅜㅜㅜㅜㅜㅜㅜ"+userNm);
+		System.out.println("우ㅜㅜㅜㅜㅜㅜㅜㅜㅜㅜㅜㅜㅜㅜㅜㅜㅜㅜㅜ"+userId);
 		System.out.println("우ㅜㅜㅜㅜㅜㅜㅜㅜㅜㅜㅜㅜㅜㅜㅜㅜㅜㅜㅜ"+searchKeyword);
 		if (searchKeyword == null) {
 			userlist = userService.getListUser();
-			if (userNm == null) {
-				userNm = "";
+			if (userId == null) {
+				userId = "";
 			} else {
-				user = userService.getUserInfo(userNm);
+				user = userService.getUserInfo(userId);
 				System.out.println("컨유오컹커너언ㄹ머" + user);
 			}
 		} else {
 			userlist = userService.getListUserNm(searchKeyword);
-			if (userNm == null) {
-				userNm = "";
+			if (userId == null) {
+				userId = "";
 			} else {
-				user = userService.getUserInfo(userNm);
+				user = userService.getUserInfo(userId);
 				System.out.println("컨유오컹커너언ㄹ머" + user);
 			}
 		}
 
-		// System.out.println("userurrrrrrrrrrrrrrrr"+user);
+		System.out.println("칸투롤러 유저허비리스트!~~!~@~!@!~@!~"+userHblist);
+		model.addAttribute("userhb", userHblist);
 		model.addAttribute("userinfo", user);
 		model.addAttribute("deptlist", deptlist);
 		model.addAttribute("hblist", hblist);
@@ -88,10 +95,18 @@ public class UserController {
 	}
 
 	@PostMapping(value = "/user/sign")
-	public String user_sign_proc(UserDto userdto) {
-		User user = User.createUser(userdto);
+	public String user_sign_proc(UserDto userDto) {
+		User user = User.createUser(userDto);
 		// Dept dept = new Dept();
 		// dept.setDeptCd(userdto.getDeptCd());
+		userService.saveUser(user);
+
+		return "redirect:/list";
+	}
+	
+	@PostMapping(value ="/user/modify")
+	public String user_modify_proc(UserDto userDto){
+		User user = User.createUser(userDto);
 		userService.saveUser(user);
 
 		return "redirect:/list";

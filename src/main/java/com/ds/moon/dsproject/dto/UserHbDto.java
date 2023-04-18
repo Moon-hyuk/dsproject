@@ -5,9 +5,8 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class DeptDto {
-
-    private String deptCd;
+public class UserHbDto {
     
-    private String deptNm;
+    private String userId;
+    private String userHbCd;
 }

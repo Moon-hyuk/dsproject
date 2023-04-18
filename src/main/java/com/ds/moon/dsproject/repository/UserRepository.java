@@ -10,7 +10,10 @@ public interface UserRepository extends JpaRepository<User,Long>{
 
     User findByuserId(String userId);
 
-    User findByUserNm(String UserNm);
+    User findByUserNm(String userNm);
+
+    // User deleteByUserId(String userId);
+
     List<User> findByUserNmContaining(String searchKeyword);
 
     
