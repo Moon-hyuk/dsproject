@@ -18,7 +18,7 @@ public class HbService {
     private final HbRepository hbRepository;
 
     public List<Hb> getListHb(){
-     return hbRepository.findAll();   
+     return hbRepository.findAllByOrderByHbCdAsc();   
     }
 
 }

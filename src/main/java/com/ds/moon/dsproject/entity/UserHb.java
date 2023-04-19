@@ -14,11 +14,13 @@ import org.apache.ibatis.annotations.Many;
 import com.ds.moon.dsproject.dto.UserHbDto;
 
 import lombok.AccessLevel;
+import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
+
 
 @Getter
 @Setter
@@ -45,8 +47,8 @@ public class UserHb{
         User user = new User();
         Hb hb = new Hb();
 
-        user.setUserId(userHbDto.getUserId());
-        hb.setHbCd(userHbDto.getUserHbCd());
+        user.setUserId(userHbDto.getUserId());//유저 아이디만 담긴 테이블
+        hb.setHbCd(userHbDto.getUserHbCd()); // 취미 코드만 담긴 테이블
 
         userHb.setUser(user);
         userHb.setHb(hb);

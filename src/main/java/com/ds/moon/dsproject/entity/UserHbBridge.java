@@ -16,4 +16,6 @@ public class UserHbBridge implements Serializable  {
     
     private String user;
     private String hb;
+
+    
 }

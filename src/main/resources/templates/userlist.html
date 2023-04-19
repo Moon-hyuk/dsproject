@@ -27,10 +27,13 @@
                         <thead>
                             <tr>
                                 <th scope="col">ID</th>
-                                <th scope="col">사원명</th> 
+                                <th scope="col">사원명</th>
                                 <th scope="col">부서</th>
                                 <th scope="col">상태</th>
-                                <H2 th:text="${userhb}"></H2>
+                                <h2 th:text="${serchuserhblist}"></h2>
+                                <!-- <th:bolck th:if="${serchuserhblist[0].hb.hbCd}!=null">
+                                    <h2 th:text="[0].hb.hbCd}"></h2>
+                                </th:bolck> -->
                             </tr>
                         </thead>
                         <tbody>
@@ -87,6 +90,7 @@
                     <div class="form-group row">
                         <label for="address" class="col-sm-3 col-form-label">주소:</label>
                         <div class="col-sm-9">
+
                             <input type="text" class="form-control" id="address" name="userAddr"
                                 th:value="${userinfo.userAddr}">
                         </div>
@@ -94,13 +98,17 @@
                     <div class="form-group row">
                         <label for="hobby" class="col-sm-3 col-form-label">취미 선택:</label>
                         <div class="col-sm-9">
-                            <div class="form-check form-check-inline"name="hb">
-                                <th:block th:each="hb : ${hblist}">
-                                <input class="form-check-input" type="checkbox" th:checked="checked"  id="inlineCheckbox1"
-                                    value="option1">
-                                <label class="form-check-label" th:text="${hb.hbNm}" th:value="${hb.hbCd}"></label>
-                            </th:block>
+                            <div class="form-check form-check-inline">
+                                <th:block th:each="hb,i : ${hblist}">
+                                    <input class="form-check-input" type="checkbox"  name="hbCd" th:value="${hb.hbCd}">
+                                    <label class="form-check-label" th:text="${hb.hbNm}"></label>
+                                    
+                                    <!-- <h2 th:text="${i.index+1}"></h2> -->
+                                </th:block>
                             </div>
+                            <!-- <h2 th:text="${userhb[1].hb.hbNm}"></th:text>
+                                <h2 th:text="${userhb.size}"></th:text> -->
+                            <!-- th:checked="${userhb.user.hb.hbCd}== ${hb.hbNm}"  -->
                             <!-- <div class="form-check form-check-inline" th:each="hb : ${hblist}">
                                 <input class="form-check-input" type="checkbox" name="hb" id="inlineCheckbox1"
                                     value="option1">
@@ -122,7 +130,7 @@
                                 th:value="${userinfo.userAprvYn}" readonly>
                         </div>
                     </div>
-                    <th:block th:if="${userinfo.userId}!=null" >
+                    <th:block th:if="${userinfo.userId}!=null">
                         <div class="form-group text-right">
                             <button type="submit" id="goModifyBtn" class="btn btn-primary">수정</button>
                             <button type="button" id="godeleteBtn" class="btn btn-primary">삭제</button>
@@ -140,4 +148,5 @@
 
 
 </script>
+
 </html>

@@ -18,8 +18,19 @@ public class UserHbService {
 
     private final UserHbRepository userHbRepository;
 
-    public List<UserHb> getList(){
+    public List<UserHb> getList() {
 
         return userHbRepository.findAll();
     }
+
+    public void saveUserHb(UserHb userHb) {
+        userHbRepository.save(userHb);
+    }
+
+    public List<UserHb> selectUserIdByHb(String userId) {
+        System.out.println("써비스"+userId);
+        System.out.println("??"+ userHbRepository.findAllByUserUserId(userId));
+        return userHbRepository.findAllByUserUserId(userId);
+    }
+
 }

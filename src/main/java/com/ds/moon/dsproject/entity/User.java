@@ -43,6 +43,7 @@ public class User {
     public static User createUser(UserDto userDto) {
         User user = new User();
         Dept dept = new Dept();
+        UserHb userHb = new UserHb();
         dept.setDeptCd(userDto.getDeptCd());
         user.setUserId(userDto.getUserId());
         user.setUserNm(userDto.getUserNm());
@@ -51,7 +52,7 @@ public class User {
         user.setUserAddr(userDto.getUserAddr());
         user.setUserAprvYn(userDto.getUserAprvYn());
         user.setDept(dept);
-        
+
         return user;
     }
 }

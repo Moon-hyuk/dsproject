@@ -18,10 +18,10 @@ public class UserService{
 
     private final UserRepository userRepository;
     //저장.수정
-    public User saveUser(User user){
-        
+    public void saveUser(User user){
         // validateDuplicateMember(user);
-        return userRepository.save(user);
+      userRepository.save(user);
+      
     }
     public User modifyUser(User user){
         return userRepository.save(user);
@@ -48,8 +48,6 @@ public class UserService{
     public List<User> getListUserNm(String searchKeyword){
         return userRepository.findByUserNmContaining(searchKeyword);
     }
-
-
 
     //삭제
     public void deleteUser(String userId){
