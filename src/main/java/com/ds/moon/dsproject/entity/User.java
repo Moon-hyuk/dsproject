@@ -2,6 +2,8 @@ package com.ds.moon.dsproject.entity;
 
 import javax.persistence.Entity;
 
+import org.hibernate.annotations.ColumnDefault;
+
 import com.ds.moon.dsproject.dto.UserDto;
 
 import lombok.EqualsAndHashCode;
@@ -29,6 +31,7 @@ public class User {
     private String userTelno;
     @Column(name = "user_addr")
     private String userAddr;
+    
     @Column(name = "user_aprv_yn")
     private String userAprvYn;
    

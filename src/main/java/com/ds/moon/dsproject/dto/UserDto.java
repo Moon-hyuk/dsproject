@@ -23,7 +23,7 @@ public class UserDto {
 
     private String userTelno;
     private String userAddr;
-    private String userAprvYn;
+    private String userAprvYn = "N";
 
     private String deptCd;
     

@@ -50,7 +50,8 @@ public class UserService{
     }
 
     //삭제
-    public void deleteUser(String userId){
-        // userRepository.deleteByUserId(userId);
+    public void deleteUserId(User user){
+
+        userRepository.delete(user);
     }
 }

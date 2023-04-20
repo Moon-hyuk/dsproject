@@ -6,7 +6,9 @@ import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Service;
 
+import com.ds.moon.dsproject.entity.User;
 import com.ds.moon.dsproject.entity.UserHb;
+import com.ds.moon.dsproject.entity.UserHbBridge;
 import com.ds.moon.dsproject.repository.UserHbRepository;
 
 import lombok.RequiredArgsConstructor;
@@ -22,14 +24,16 @@ public class UserHbService {
 
         return userHbRepository.findAll();
     }
+    public void deleteByUser(String userId){
+        userHbRepository.deleteByUser(userId);
+    }
+
 
     public void saveUserHb(UserHb userHb) {
         userHbRepository.save(userHb);
     }
 
     public List<UserHb> selectUserIdByHb(String userId) {
-        System.out.println("써비스"+userId);
-        System.out.println("??"+ userHbRepository.findAllByUserUserId(userId));
         return userHbRepository.findAllByUserUserId(userId);
     }
 

@@ -30,24 +30,26 @@
                                 <th scope="col">사원명</th>
                                 <th scope="col">부서</th>
                                 <th scope="col">상태</th>
-                                <h2 th:text="${serchuserhblist}"></h2>
-                                <!-- <th:bolck th:if="${serchuserhblist[0].hb.hbCd}!=null">
-                                    <h2 th:text="[0].hb.hbCd}"></h2>
-                                </th:bolck> -->
                             </tr>
                         </thead>
                         <tbody>
                             <tr th:each="list:${userlist}">
                                 <td th:text="${list.userId}"></td>
-                                <td><a th:href="@{/list(userId=${list.userId})}" th:text="${list.userNm}"></a></td>
+                                <th:block th:if="${searchKeyword == null}">
+                                    <td><a th:href="@{/list(userId=${list.userId},searchKeyword='')}"
+                                            th:text="${list.userNm}"></a></td>
+                                </th:block>
                                 <td th:text="${list.dept.deptNm}"></td>
-                                <td th:text="${list.userEmlAddr}"></td>
+                                <td>
+                                <span th:if="${list.userAprvYn}=='N'" th:text="승인요청"></span>
+                                <span th:if="${list.userAprvYn}=='Y'" th:text="승인완료"></span>
+                                </td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
             </div>
-            <form action="/user/modify" method="post" id="infoform">
+            <form  method="post" id="infoform">
                 <div class="col">
                     <div class="form-group row">
                         <label for="id" class="col-sm-3 col-form-label">ID:</label>
@@ -100,40 +102,37 @@
                         <div class="col-sm-9">
                             <div class="form-check form-check-inline">
                                 <th:block th:each="hb,i : ${hblist}">
-                                    <input class="form-check-input" type="checkbox"  name="hbCd" th:value="${hb.hbCd}">
+                                    <input class="form-check-input" type="checkbox" name="hbCd" th:value="${hb.hbCd}"
+                                        th:checked="${#strings.contains(hbList, hb.hbCd)}">
                                     <label class="form-check-label" th:text="${hb.hbNm}"></label>
-                                    
                                     <!-- <h2 th:text="${i.index+1}"></h2> -->
                                 </th:block>
                             </div>
-                            <!-- <h2 th:text="${userhb[1].hb.hbNm}"></th:text>
-                                <h2 th:text="${userhb.size}"></th:text> -->
-                            <!-- th:checked="${userhb.user.hb.hbCd}== ${hb.hbNm}"  -->
-                            <!-- <div class="form-check form-check-inline" th:each="hb : ${hblist}">
-                                <input class="form-check-input" type="checkbox" name="hb" id="inlineCheckbox1"
-                                    value="option1">
-                                <label class="form-check-label" th:text="${hb.hbNm}" th:value="${hb.hbCd}"></label>
-                            </div> -->
-                            <!-- <select class="form-control" id="deptlist" name="deptCd">
-                                <th:block th:each="dept:${deptlist}" th:if="${userinfo.userId}!=null">
-                                    <option th:text="${dept.deptNm}" th:value="${dept.deptCd}"
-                                        th:selected="${dept.deptCd} == ${userinfo.dept.deptCd}">
-                                    </option>
-                                </th:block>
-                            </select> -->
                         </div>
                     </div>
                     <div class="form-group row">
                         <label for="status" class="col-sm-3 col-form-label">상태:</label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control" id="status" name="status"
-                                th:value="${userinfo.userAprvYn}" readonly>
+                            <select class="form-control" name="userAprvYn">
+                                <div>
+                                <th:block th:if ="${userinfo.userAprvYn}=='Y'">
+                                    <option value="N">승인요청</option>
+                                    <option value="Y" selected>승인완료 </option>
+                                </th:block>
+                                <th:block th:if ="${userinfo.userAprvYn}=='N'">
+                                    <option value="N">승인요청</option>
+                                    <option value="Y">승인완료</option>
+                                </th:block>
+                            </div>
+                            </select>
+
+                         
                         </div>
                     </div>
                     <th:block th:if="${userinfo.userId}!=null">
                         <div class="form-group text-right">
-                            <button type="submit" id="goModifyBtn" class="btn btn-primary">수정</button>
-                            <button type="button" id="godeleteBtn" class="btn btn-primary">삭제</button>
+                            <button type="submit" formaction="/user/sign" class="btn btn-primary">수정</button>
+                            <button type="submit" formaction="/user/delete" class="btn btn-primary">삭제</button>
                         </div>
                     </th:block>
             </form>

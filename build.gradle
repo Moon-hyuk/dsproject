@@ -17,6 +17,8 @@ configurations {
 repositories {
 	mavenCentral()
 }
+bootBuildImage { imageName = "${dsproject.moon}" }
+
 
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'

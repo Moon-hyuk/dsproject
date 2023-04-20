@@ -19,6 +19,7 @@ import com.ds.moon.dsproject.entity.Dept;
 import com.ds.moon.dsproject.entity.Hb;
 import com.ds.moon.dsproject.entity.User;
 import com.ds.moon.dsproject.entity.UserHb;
+import com.ds.moon.dsproject.entity.UserHbBridge;
 import com.ds.moon.dsproject.service.UserService;
 import com.ds.moon.dsproject.service.DeptService;
 import com.ds.moon.dsproject.service.HbService;
@@ -77,11 +78,17 @@ public class UserController {
 				System.out.println("컨유오컹커너언ㄹ머" + user);
 			}
 		}
-		//취미
+		//취미serchuserhblist
 		if(userId!=null){
 			List<UserHb> searchUserHbList = userHbService.selectUserIdByHb(userId);
 			model.addAttribute("serchuserhblist", searchUserHbList);
-			System.out.println("검색된 유저허비리스트"+searchUserHbList);
+			String hbList ="";
+			// userHbService.deleteUserHb(userId);
+
+			for(int i=0; i<searchUserHbList.size(); i++){
+				hbList += searchUserHbList.get(i).getHb().getHbCd();
+			}
+			model.addAttribute("hbList", hbList);
 		}
 		
 
@@ -113,32 +120,46 @@ public class UserController {
 		userHbDto.setUserHbCd(hbDto.getHbCd());
 
 		UserHb userHb = UserHb.createUserHb(userHbDto);
-		System.out.println("유저아이디"+userDto.getUserId());
-		System.out.println("hbCd"+hbDto.getHbCd());
-		System.out.println("여기에 들어옴?"+ user);
-		System.out.println("여기에 들어옴?ss"+ hb);
-		System.out.println("여기온 하비"+hb.getHbCd());
-		System.out.println("userHb"+userHb);
+		// System.out.println("유저아이디"+userDto.getUserId());
+		// System.out.println("hbCd"+hbDto.getHbCd());
+		// System.out.println("여기에 들어옴?"+ user);
+		// System.out.println("여기에 들어옴?ss"+ hb);
+		// System.out.println("여기온 하비"+hb.getHbCd());
+		// System.out.println("userHb"+userHb);
 
-		//자르기
-		String[] hbList = hb.getHbCd().split(",");
 		//유저 먼저 등록 (pk라 먼저해야됨)
 		userService.saveUser(user);
 
-		//취미 하나씩 잘라넣기
-		for(int i=0; i<hbList.length; i++){
-			userHb.getHb().setHbCd(hbList[i]);// 취미 코드 넣기
-			userHb.getUser().setUserId(userDto.getUserId());//유저아이디 넣기
+		//자르기
+		if(hb.getHbCd() !=null){
+			String[] hbList = hb.getHbCd().split(",");
 
-			System.out.println(userDto.getUserId() + hbList[i]);
-			System.out.println("저장전 "+userHb);
-			userHbService.saveUserHb(userHb);
-		}
+			for(int i=0; i<hbList.length; i++){
+				userHb.getHb().setHbCd(hbList[i]);// 취미 코드 넣기
+				userHb.getUser().setUserId(userDto.getUserId());//유저아이디 넣기
+	
+				userHbService.saveUserHb(userHb);
+			}
+		}	
+
+		//취미 하나씩 잘라넣기
+		
 		
 		
 
 		return "redirect:/list";
 	}
+
+	@PostMapping(value ="/user/delete")
+	public String user_delete_proc(User user){
+		// userHbService.deleteByUserId(userHbB);
+		System.out.println("뜨나."+user.getUserId());
+		userHbService.deleteByUser(user.getUserId());
+		userService.deleteUserId(user);
+
+		return "redirect:/list";
+	}
+
 	
 	@PostMapping(value ="/user/modify")
 	public String user_modify_proc(UserDto userDto){
