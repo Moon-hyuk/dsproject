@@ -16,7 +16,7 @@ spring:
     username: test
     password: 1234
   # jpa properties
-  # SQL문 정렬하여 출력
+  # SQL문 정렬하여 출력 
   jpa:
     hibernate:
       ddl-auto: none # When you launch the application for the first time - switch "none" at "create"
