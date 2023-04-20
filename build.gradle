@@ -17,7 +17,6 @@ configurations {
 repositories {
 	mavenCentral()
 }
-bootBuildImage { imageName = "${moon/demo}" }
 
 
 dependencies {
