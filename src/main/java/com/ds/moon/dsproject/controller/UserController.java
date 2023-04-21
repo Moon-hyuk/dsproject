@@ -61,7 +61,6 @@ public class UserController {
 				userId = "";
 			} else {
 				user = userService.getUserInfo(userId);
-				System.out.println("컨유오컹커너언ㄹ머" + user);
 			}
 		} else {
 			userlist = userService.getListUserNm(searchKeyword);
@@ -69,7 +68,6 @@ public class UserController {
 				userId = "";
 			} else {
 				user = userService.getUserInfo(userId);
-				System.out.println("컨유오컹커너언ㄹ머" + user);
 			}
 		}
 		//취미serchuserhblist
@@ -114,12 +112,6 @@ public class UserController {
 		userHbDto.setUserHbCd(hbDto.getHbCd());
 
 		UserHb userHb = UserHb.createUserHb(userHbDto);
-		// System.out.println("유저아이디"+userDto.getUserId());
-		// System.out.println("hbCd"+hbDto.getHbCd());
-		// System.out.println("여기에 들어옴?"+ user);
-		// System.out.println("여기에 들어옴?ss"+ hb);
-		// System.out.println("여기온 하비"+hb.getHbCd());
-		// System.out.println("userHb"+userHb);
 
 		//유저 먼저 등록 (pk라 먼저해야됨)
 		userService.saveUser(user);
