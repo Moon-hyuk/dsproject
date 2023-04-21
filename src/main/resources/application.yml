@@ -11,7 +11,7 @@ spring:
       suffix: .html
   # Database
   datasource:
-    driver-class-name: oracle.postgresql.Driver
+    driver-class-name: org.postgresql.Driver
     url: jdbc:postgresql://34.64.56.121:5432/postgres
     username: postgres
     password: 1234
