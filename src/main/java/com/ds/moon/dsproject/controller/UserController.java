@@ -15,6 +15,7 @@ import com.ds.moon.dsproject.entity.Dept;
 import com.ds.moon.dsproject.entity.Hb;
 import com.ds.moon.dsproject.entity.User;
 import com.ds.moon.dsproject.entity.UserHb;
+import com.ds.moon.dsproject.entity.UserHbBridge;
 import com.ds.moon.dsproject.service.UserService;
 import com.ds.moon.dsproject.service.DeptService;
 import com.ds.moon.dsproject.service.HbService;
@@ -115,7 +116,7 @@ public class UserController {
 
 		//유저 먼저 등록 (pk라 먼저해야됨)
 		userService.saveUser(user);
-
+		userHbService.delete(userHb);
 		//자르기
 		if(hb.getHbCd() !=null){
 			String[] hbList = hb.getHbCd().split(",");
@@ -137,10 +138,11 @@ public class UserController {
 	}
 
 	@PostMapping(value ="/user/delete")
-	public String user_delete_proc(User user){
-		// userHbService.deleteByUserId(userHbB);
-		System.out.println("뜨나."+user.getUserId());
-		userHbService.deleteByUser(user.getUserId());
+	public String user_delete_proc(User user, UserHb userHb){
+		userHb.setUser(user);
+		userHbService.delete(userHb);
+
+		
 		userService.deleteUserId(user);
 
 		return "redirect:/list";

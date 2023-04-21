@@ -16,6 +16,7 @@ public interface UserRepository extends JpaRepository<User,Long>{
 
     List<User> findByUserNmContaining(String searchKeyword);
 
+    void delete(User user);
     
     
 } 

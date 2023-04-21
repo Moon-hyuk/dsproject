@@ -6,9 +6,7 @@ import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Service;
 
-import com.ds.moon.dsproject.entity.User;
 import com.ds.moon.dsproject.entity.UserHb;
-import com.ds.moon.dsproject.entity.UserHbBridge;
 import com.ds.moon.dsproject.repository.UserHbRepository;
 
 import lombok.RequiredArgsConstructor;
@@ -24,8 +22,8 @@ public class UserHbService {
 
         return userHbRepository.findAll();
     }
-    public void deleteByUser(String userId){
-        userHbRepository.deleteByUser(userId);
+    public void delete(UserHb userHb){
+        userHbRepository.deleteByUserUserId(userHb.getUser().getUserId());
     }
 
 
