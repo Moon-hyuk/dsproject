@@ -1,8 +1,6 @@
 package com.ds.moon.dsproject.entity;
 
-import java.io.Serializable;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.IdClass;
@@ -10,13 +8,10 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import org.apache.ibatis.annotations.Many;
 
 import com.ds.moon.dsproject.dto.UserHbDto;
 
 import lombok.AccessLevel;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
