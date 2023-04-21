@@ -41,7 +41,6 @@ public class UserController {
 
 	@GetMapping(value = "/test")
 	public String test(Model model) {
-		model.addAttribute("test", "테스트중이용");
 		return "/test";
 	}
 
