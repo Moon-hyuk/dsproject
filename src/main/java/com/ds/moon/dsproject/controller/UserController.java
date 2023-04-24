@@ -116,6 +116,7 @@ public class UserController {
 
 		//유저 먼저 등록 (pk라 먼저해야됨)
 		userService.saveUser(user);
+		System.out.println("------------------"+userHb);
 		userHbService.delete(userHb);
 		//자르기
 		if(hb.getHbCd() !=null){
@@ -140,8 +141,8 @@ public class UserController {
 	@PostMapping(value ="/user/delete")
 	public String user_delete_proc(User user, UserHb userHb){
 		userHb.setUser(user);
+		System.out.println("삭제"+userHb);
 		userHbService.delete(userHb);
-
 		
 		userService.deleteUserId(user);
 
