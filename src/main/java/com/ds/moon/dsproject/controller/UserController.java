@@ -15,7 +15,6 @@ import com.ds.moon.dsproject.entity.Dept;
 import com.ds.moon.dsproject.entity.Hb;
 import com.ds.moon.dsproject.entity.User;
 import com.ds.moon.dsproject.entity.UserHb;
-import com.ds.moon.dsproject.entity.UserHbBridge;
 import com.ds.moon.dsproject.service.UserService;
 import com.ds.moon.dsproject.service.DeptService;
 import com.ds.moon.dsproject.service.HbService;
