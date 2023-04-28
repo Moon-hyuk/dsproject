@@ -21,10 +21,12 @@ import com.ds.moon.dsproject.service.HbService;
 import com.ds.moon.dsproject.service.UserHbService;
 
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RestController;
 
-@Controller
+@RestController
 public class UserController {
 
+	
 	@Autowired
 	private UserService userService;
 	@Autowired
