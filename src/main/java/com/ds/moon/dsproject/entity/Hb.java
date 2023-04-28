@@ -7,7 +7,6 @@ import javax.persistence.Table;
 
 import com.ds.moon.dsproject.dto.HbDto;
 
-import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
