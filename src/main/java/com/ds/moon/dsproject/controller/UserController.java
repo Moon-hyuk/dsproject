@@ -15,17 +15,18 @@ import com.ds.moon.dsproject.entity.Dept;
 import com.ds.moon.dsproject.entity.Hb;
 import com.ds.moon.dsproject.entity.User;
 import com.ds.moon.dsproject.entity.UserHb;
-import com.ds.moon.dsproject.entity.UserHbBridge;
 import com.ds.moon.dsproject.service.UserService;
 import com.ds.moon.dsproject.service.DeptService;
 import com.ds.moon.dsproject.service.HbService;
 import com.ds.moon.dsproject.service.UserHbService;
 
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RestController;
 
-@Controller
+@RestController
 public class UserController {
 
+	
 	@Autowired
 	private UserService userService;
 	@Autowired
